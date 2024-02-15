@@ -13,7 +13,7 @@ function App() {
     }).catch( err => console.log(err.message));
   }, []);
 
-  
+
   return (
     <Suspense fallback="loading">
       <div className="App">
@@ -28,7 +28,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {t('learnReact', { lng: 'en', ns: 'translation'})}
+            {t('learnReact', { lng: 'de', ns: 'translation'})}
           </a>
         </header>
       </div>
