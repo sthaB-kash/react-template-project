@@ -51,3 +51,8 @@
   border-radius: 8px;
   transition-duration: 0.4s;
 }
+
+.btn.lang-btn:hover {
+  background-color: #61dafb;
+  color: black;
+}
