@@ -1,11 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import axios from './axios';
 
 function App() {
   const { t, i18n } = useTranslation();
 
+  useEffect(() => {
+    axios.get('/todos/1').then(response => {
+      console.log(response.data);
+    }).catch( err => console.log(err.message));
+  }, []);
+
+  
   return (
     <Suspense fallback="loading">
       <div className="App">
