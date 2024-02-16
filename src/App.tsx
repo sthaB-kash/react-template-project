@@ -6,6 +6,8 @@ import './App.css'
 import { useAppDispatch, useAppSelector } from './app/hooks'
 import { decrement, increment, incrementByAmount } from './features/counter/counterSlice'
 
+import { useGetBreedsQuery } from './features/dogs/dogsApiSlice'
+
 function App() {
   const count = useAppSelector((state) => state.counter.value);
   const dispatch = useAppDispatch();
@@ -16,17 +18,34 @@ function App() {
     dispatch(incrementByAmount(5)); // increments by 5
   }
 
+  const [numDogs, setNumDogs] = useState(5);
+  const { data = [], isFetching } = useGetBreedsQuery(numDogs);
+
   return (
-    <>
+    <div>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <select value={numDogs} onChange={ e => setNumDogs(Number(e.target.value))}>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+        </select>
+        <p>number of data fetched { isFetching ? "Fetching" : data.length}</p> 
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Picture</th></tr>
+          </thead>
+          <tbody>
+            {
+              data.map( dog => (
+                <tr key={dog.id}>
+                  <td>{dog.name}</td>
+                  <td><img src={dog.image.url} alt={dog.name} height={200} width={250} /></td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
       </div>
-      <h1>Vite + React</h1>
       <div className="card">
         <button onClick={handleClick}>
           count is {count}
@@ -35,10 +54,7 @@ function App() {
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
