@@ -22,9 +22,7 @@ function App() {
       <ul className="card">
         {
           users.map( user =>(
-            <>
               <li key={user}>{user}</li>
-            </>
           ) )
         }
       </ul>

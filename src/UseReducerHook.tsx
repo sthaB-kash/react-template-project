@@ -11,6 +11,27 @@ type Action = {
 
 }
 
+const UserForm = () => {
+    const [state, dispatch] = useReducer((state: any, action:any) => {
+        return { ...state, ...action }
+    }, {firstName: '', lastName: ''});
+
+    return (
+        <div>
+            <h2>User Form</h2>
+            <div>
+                <p>First Name: <input type="text" onChange={ e => dispatch({firstName: e.target.value })}/></p>
+                <p>Last Name: <input type="text" onChange={ e => dispatch({lastName: e.target.value }) }/></p>
+                <p>email: <input type="text" onChange={ e => dispatch({email: e.target.value }) }/></p>
+            </div>
+            <div>
+                <h2>Form details:</h2>
+                {Object.entries(state).map(([key, val])=> (<p key={key}>{`${key}: ${val}`}</p>))}
+            </div>
+        </div>
+    )
+}
+
 function UseReducerHook() {
 
     const [state, dispatch] = useReducer((state: State, action: Action) => {
@@ -33,8 +54,10 @@ function UseReducerHook() {
     return (
         <div>
             <h1>Use Reducer Hook</h1>
+            <UserForm/>
+            <hr/>
             <div>
-                { state.names.map((user: string) => (<p>{user}</p>))}
+                { state.names.map((user: string) => (<p key={user}>{user}</p>))}
             </div>
             <div>
                 <input type="text" value={state.name}
