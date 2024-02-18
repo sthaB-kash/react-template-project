@@ -3,6 +3,7 @@ import './App.css'
 import UseReducerHook from './UseReducerHook';
 import UseMemoAndUseCallback from './UseMemoAndUseCallback';
 import UseEffect from './UseEffect';
+import UseRef from './UseRef';
 
 const list = ['user1', 'user2'];
 
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <>
+    <UseRef/>
     <UseEffect/>
     <UseMemoAndUseCallback/>
     <UseReducerHook/>
