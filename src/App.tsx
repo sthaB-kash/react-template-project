@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import UseReducerHook from './UseReducerHook';
 import UseMemoAndUseCallback from './UseMemoAndUseCallback';
+import UseEffect from './UseEffect';
 
 const list = ['user1', 'user2'];
 
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <>
+    <UseEffect/>
     <UseMemoAndUseCallback/>
     <UseReducerHook/>
     <hr/>
