@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import UseReducerHook from './UseReducerHook';
+import UseMemoAndUseCallback from './UseMemoAndUseCallback';
 
 const list = ['user1', 'user2'];
 
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <>
+    <UseMemoAndUseCallback/>
     <UseReducerHook/>
     <hr/>
       <h1>Vite + React</h1>
