@@ -1,4 +1,5 @@
 import { createContext, useContext } from "react";
+import ContextExample1 from "./ContextExample1";
 
 interface User {
   name: string;
@@ -46,6 +47,7 @@ const Context = () => {
       >
         <UserList />
       </UserContext.Provider>
+      <ContextExample1/>
       <hr />
     </ThemeContext.Provider>
   );

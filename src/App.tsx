@@ -4,7 +4,7 @@ import UseReducerHook from "./UseReducerHook";
 import UseMemoAndUseCallback from "./UseMemoAndUseCallback";
 import UseEffect from "./UseEffect";
 import UseRef from "./UseRef";
-import Context from "./Context";
+import Context from "./context/Context";
 import PassingPropsExample from "./PassingPropsExample";
 import DigitalClock from "./components/DigitalClock";
 
