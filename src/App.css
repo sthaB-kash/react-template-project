@@ -8,4 +8,26 @@
 .card {
   text-align: left;
 }
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin: 0.5rem;
+}
+
+.primary {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.secondary {
+  background-color: #6c757d;
+  color: #ffffff;
+}
+
+.danger {
+  background-color: #dc3545;
+  color: #ffffff;
+}
 

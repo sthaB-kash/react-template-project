@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "./components/Button";
 
 interface Props {
   cities: string[];
@@ -36,6 +37,7 @@ const PassingPropsExample = () => {
   return (
     <>
       <h1>Props Passing Example</h1>
+      <Button onClick={() => alert('clicked')} color="danger">My Button</Button>
       <Cities country={country} cities={cities} setCity={handleClick}>
         <h5>Click on one of the cities to display below</h5>
       </Cities>
