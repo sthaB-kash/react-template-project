@@ -5,6 +5,7 @@ import UseMemoAndUseCallback from "./UseMemoAndUseCallback";
 import UseEffect from "./UseEffect";
 import UseRef from "./UseRef";
 import Context from "./Context";
+import PassingPropsExample from "./PassingPropsExample";
 
 const list = ["user1", "user2"];
 
@@ -19,6 +20,7 @@ function App() {
 
   return (
     <>
+      <PassingPropsExample/>
       <Context />
       <UseRef />
       <UseEffect />
