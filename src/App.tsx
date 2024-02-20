@@ -7,6 +7,7 @@ import UseRef from "./UseRef";
 import Context from "./context/Context";
 import PassingPropsExample from "./PassingPropsExample";
 import DigitalClock from "./components/DigitalClock";
+import UseRefvsUseState from "./UseRefvsUseState";
 
 const list = ["user1", "user2"];
 
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <>
+      <UseRefvsUseState/>
       <DigitalClock />
       <PassingPropsExample />
       <Context />
