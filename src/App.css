@@ -56,3 +56,12 @@
   background-color: #61dafb;
   color: black;
 }
+
+
+main {
+  height: 100vh;
+}
+
+nav {
+  margin: 20px auto;
+}

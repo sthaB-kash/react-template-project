@@ -4,10 +4,15 @@ import { Suspense, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import axios from "./axios";
 import { useNavigate, NavLink, Outlet } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { isLoggedIn, logout } from "./actions/user";
+import UnAuthenticatedPage from "./pages/UnAuthenticatedPage";
 
 function App() {
   const { t, i18n } = useTranslation();
   const [lang, setLang] = useState("en");
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   const navigation = useNavigate();
 
@@ -23,53 +28,25 @@ function App() {
         console.log(response.data);
       })
       .catch((err) => console.log(err.message));
+
+    dispatch(isLoggedIn());
   }, []);
 
   return (
     <Suspense fallback="loading">
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t("learnReact", { lng: lang, ns: "translation" })}
-          </a>
-          <div>
-            <button
-              className="btn lang-btn"
-              onClick={() => changeLanguage("en")}
-            >
-              English
-            </button>
-            <button
-              className="btn lang-btn"
-              onClick={() => changeLanguage("np")}
-            >
-              नेपाली
-            </button>
-            <button
-              className="btn lang-btn"
-              onClick={() => changeLanguage("it")}
-            >
-              Italian
-            </button>
-          </div>
-        </header>
-        <main>
-          <section>
-            <h1> this is main section</h1>
+      {!user.isLoggedIn === true ? (
+        <UnAuthenticatedPage/>
+      ) : (
+        <>
+          <header>
             <nav>
               <NavLink
-                to="/users/4"
+                to="/"
                 className={({ isActive, isPending }) =>
                   `${isActive ? "active" : isPending ? "pending" : ""} nav-link`
                 }
               >
-                User 4
+                Home
               </NavLink>
               <NavLink
                 to="/users/5"
@@ -87,16 +64,61 @@ function App() {
               >
                 About
               </NavLink>
+              {user.isLoggedIn === true  && (
+                <button
+                  onClick={() => dispatch(logout())}
+                  className={"nav-link btn-logout"
+                  }
+                >
+                  Logout
+                </button>)
+              }
             </nav>
-          </section>
-          <div
-            id="page-content"
-            className={navigation.state === "loading" ? "loading" : ""}
-          >
-            <Outlet />
+          </header>
+          <div className="App">
+            <main>
+              <div
+                id="page-content"
+                className={navigation.state === "loading" ? "loading" : ""}
+              >
+                <Outlet />
+              </div>
+            </main>
+
+            <section className="App-header">
+              <img src={logo} className="App-logo" alt="logo" />
+              <a
+                className="App-link"
+                href="https://reactjs.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t("learnReact", { lng: lang, ns: "translation" })}
+              </a>
+              <div>
+                <button
+                  className="btn lang-btn"
+                  onClick={() => changeLanguage("en")}
+                >
+                  English
+                </button>
+                <button
+                  className="btn lang-btn"
+                  onClick={() => changeLanguage("np")}
+                >
+                  नेपाली
+                </button>
+                <button
+                  className="btn lang-btn"
+                  onClick={() => changeLanguage("it")}
+                >
+                  Italian
+                </button>
+              </div>
+            </section>
           </div>
-        </main>
-      </div>
+        </>
+      )}
     </Suspense>
   );
 }

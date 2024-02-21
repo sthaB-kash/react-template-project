@@ -13,19 +13,34 @@ code {
 }
 
 
-a.nav-link {
+.nav-link {
   margin: 10px;
   padding: 5px;
   border-radius: 8px;
   text-decoration: none;
 }
 
-a.nav-link:hover, a.nav-link.active {
+.nav-link:hover, .nav-link.active {
   background-color: rgb(57, 54, 231);
   color: white;
   text-decoration: none;
 }
 
+.btn-logout {
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
 .loading {
   background-color: red;
+}
+
+
+.unauthenticated-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }

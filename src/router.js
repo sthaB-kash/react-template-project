@@ -1,8 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
-import ErrorPage from "./ErrorPage";
-import User from "./routes/User";
-import About from "./routes/About";
+import ErrorPage from "./pages/ErrorPage";
+import User from "./pages/User";
+import About from "./pages/About";
+import Login from "./pages/auth/Login";
+import Register from "./pages/auth/Register";
+import Home from "./pages/Home";
 
 const router = createBrowserRouter([
     {
@@ -10,6 +13,10 @@ const router = createBrowserRouter([
         element: <App/>,
         errorElement: <ErrorPage/>,
         children: [
+            {
+                path: "",
+                element: <Home/>
+            },
             {
                 path: "users/:userId",
                 element: <User/>,
@@ -20,6 +27,14 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: "/login",
+        element: <Login/>
+    },
+    {
+        path: "/register",
+        element: <Register/>
+    }
     
 ]);
 

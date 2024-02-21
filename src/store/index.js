@@ -1,11 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "../actions/counter";
+import { setupListeners } from "@reduxjs/toolkit/query";
+import userReducer from "../actions/user";
+import { authApi } from "../services/auth";
 
 export const store = configureStore(
     {
         reducer: {
-            counter: counterReducer,
-        }
+            user: userReducer,
+            [authApi.reducerPath]: authApi.reducer,
+        },
+        middleware: (getDefaultMiddleware) =>
+            getDefaultMiddleware().concat(authApi.middleware),
     }
 );
 
